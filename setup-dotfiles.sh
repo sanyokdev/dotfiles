@@ -85,5 +85,7 @@ echo -e "\nLinking \"~/$config_dir\" dir"
 DoLink "bspwm" "$config_dir"
 DoLink "sxhkd" "$config_dir"
 DoLink "polybar" "$config_dir"
+DoLink "nvim" "$config_dir"
+DoLink "kitty" "$config_dir"
 
 echo -e "\nComplete!"

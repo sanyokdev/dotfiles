@@ -3,3 +3,5 @@
 .config/polybar/polybar
 .screenlayout/.screenlayout
 .config/sxhkd/sxhkd
+.config/kitty/kitty
+.config/nvim/nvim
