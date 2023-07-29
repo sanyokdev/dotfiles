@@ -7,7 +7,7 @@ end
 -- Runs a make command with a specified argument (project specific - bad)
 function RunMake(target, release)
 	local current_dir = vim.fn.getcwd()
-	local target_dir = "D:\\GitProjects\\pine-engine"
+	local target_dir = "~/Dev/pine-engine"
 
 	-- Change to the desired directory
 	vim.cmd("cd " .. target_dir)

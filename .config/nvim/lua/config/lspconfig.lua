@@ -51,7 +51,7 @@ lspconfig["clangd"].setup({
 	on_attach = custom_attach,
 	filetypes = { "c", "cpp" },
 	cmd = {
-		"C:/Dev/LLVM/bin/clangd.exe",
+		"clangd",
 		"--all-scopes-completion",
 		"--background-index",
 		"--clang-tidy",
@@ -62,12 +62,10 @@ lspconfig["clangd"].setup({
 		"-j=4",
 		"--pch-storage=memory",
 		"--pretty",
-		"--log=verbose",
+		-- "--log=verbose",
 	},
 	init_option = { fallbackFlags = { "-std=c99" } },
-	root_dir = function(_)
-		return "D:/GitProjects/pine-engine"
-	end, -- require("lspconfig").util.root_pattern(".git", ".clang-format"),
+	root_dir = require("lspconfig").util.root_pattern(".git", ".clang-format"),
 })
 
 -- CMake (build system)

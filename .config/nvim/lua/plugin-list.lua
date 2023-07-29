@@ -103,7 +103,7 @@ require("lazy").setup({
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
-					-- "clangd",
+					"clangd",
 					"cmake",
 				},
 			})
@@ -138,7 +138,7 @@ require("lazy").setup({
 			"hrsh7th/cmp-cmdline", -- source for vim cmd
 
 			-- Snippets
-			{ "L3MON4D3/LuaSnip", version = "1.2.*" }, -- snippet engine
+			{ "L3MON4D3/LuaSnip", version = "2.0.0" }, -- snippet engine
 			"saadparwaiz1/cmp_luasnip", -- source for autocomplete
 		},
 	},
@@ -212,15 +212,6 @@ require("lazy").setup({
 			})
 		end,
 	},
-	-- Not sure if I need this, tbd
-	-- {
-	-- 	"folke/which-key.nvim",
-	-- 	event = "VeryLazy",
-	-- 	config = function()
-	-- 		vim.o.timeout = true
-	-- 		vim.o.timeoutlen = 300
-	-- 	end,
-	-- },
 
 	-- Fun
 	{
