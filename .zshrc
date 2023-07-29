@@ -106,3 +106,8 @@ alias fcls="printf '\e[H\e[3J'"
 
 alias ls="ls -A --color=auto"
 alias lg="lazygit"
+
+alias cd-dev="cd ~/Dev/"
+alias cd-dot="cd ~/Dev/dotfiles/"
+alias cd-nvim="cd ~/Dev/dotfiles/.config/nvim/"
+alias cd-pine="cd ~/Dev/pine-engine/"
