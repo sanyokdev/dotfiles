@@ -1,0 +1,5 @@
+# Ignore directory symlink files
+.config/bspwm/bspwm
+.config/polybar/polybar
+.screenlayout/.screenlayout
+.config/sxhkd/sxhkd
