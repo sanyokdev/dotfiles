@@ -23,7 +23,14 @@ require("lazy").setup({
 	{
 		"stevearc/oil.nvim",
 		config = function()
-			require("oil").setup()
+			require("oil").setup({
+				-- Restore window options to previous values when leaving an oil buffer
+				restore_win_options = false,
+				view_options = {
+					-- Show files and directories that start with "."
+					show_hidden = true,
+				},
+			})
 		end,
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
