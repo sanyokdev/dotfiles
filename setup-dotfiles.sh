@@ -78,6 +78,7 @@ echo -e "\nLinking \"~/\" (home) dir"
 DoLink ".xinitrc"
 DoLink ".xprofile"
 DoLink ".screenlayout"
+DoLink ".zshrc"
 
 config_dir=".config"
 echo -e "\nLinking \"~/$config_dir\" dir"
