@@ -79,6 +79,7 @@ DoLink ".xinitrc"
 DoLink ".xprofile"
 DoLink ".screenlayout"
 DoLink ".zshrc"
+DoLink ".sanyok"
 
 config_dir=".config"
 echo -e "\nLinking \"~/$config_dir\" dir"
