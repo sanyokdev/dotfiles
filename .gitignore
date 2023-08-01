@@ -5,3 +5,5 @@
 .config/sxhkd/sxhkd
 .config/kitty/kitty
 .config/nvim/nvim
+.config/mpv/mpv
+.sanyok/.sanyok
