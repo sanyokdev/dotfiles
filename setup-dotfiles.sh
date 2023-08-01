@@ -88,5 +88,6 @@ DoLink "sxhkd" "$config_dir"
 DoLink "polybar" "$config_dir"
 DoLink "nvim" "$config_dir"
 DoLink "kitty" "$config_dir"
+DoLink "mpv" "$config_dir"
 
 echo -e "\nComplete!"
