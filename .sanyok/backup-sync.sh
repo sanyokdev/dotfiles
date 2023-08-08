@@ -64,6 +64,10 @@ function SyncBucket() {
     fi
 }
 
+# Log date/time to .log file
+current_datetime=$(date +"%Y-%m-%d %H:%M:%S")
+echo "----- running backup-sync.sh @$current_datetime" >> ~/.sanyok/backblaze-sync.log
+
 # Global environment variable checks
 CheckGlobalVar "S3_PROFILE"
 CheckGlobalVar "S3_ENDPOINT"
