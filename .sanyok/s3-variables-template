@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/zsh
 
 # Make sure variables are correct!
 export S3_PROFILE=""         # aws cli profile_name

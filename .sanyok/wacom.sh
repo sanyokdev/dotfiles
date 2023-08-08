@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/zsh
 
 # Id 8: "Wacom Intuos BT S Pen stylus"
 # Id 9: "Wacom Intuos BT S Pad pad"

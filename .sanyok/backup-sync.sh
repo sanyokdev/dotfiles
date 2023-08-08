@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/zsh
 
 # Logging
 function LogDefault() {
@@ -7,6 +7,10 @@ function LogDefault() {
 
 function LogInfo() {
     echo -e "\e[1m\e[34m$1\e[0m"
+}
+
+function LogWarning() {
+    echo -e "\e[1m\e[33m$1\e[0m"
 }
 
 function LogSuccess() {
@@ -44,31 +48,34 @@ function SyncBucket() {
     else
         local aws_cmd="aws s3 sync $aws_source $aws_destination --profile $S3_PROFILE --endpoint-url=$S3_ENDPOINT --delete"
 
-        LogInfo "=== Syncing with AWS bucket ==="
+        LogWarning "----- Syncing with AWS bucket @$(date +"%Y-%m-%d %H:%M:%S") -----"
         LogInfo "Command:"
         LogDefault "$aws_cmd"
 
-        LogInfo "\nExecuting dry run!"
-        eval "$aws_cmd --dryrun" >/dev/null
+        LogInfo "Executing dry run!"
+        dryrun_output=$(eval "$aws_cmd --dryrun")
         exit_status=$?
 
         if [ $exit_status -eq 0 ]; then
             LogDefault "dry run completed successfully!"
 
-            LogInfo "\nExecuting full run!"
-            eval "$aws_cmd"
-            LogSuccess "Sync complete!"
+            if [ -z "$dryrun_output" ]; then
+                LogSuccess "Nothing changed!"
+            else
+                LogInfo "Executing full run!"
+                eval "$aws_cmd"
+                LogSuccess "Sync complete!"
+            fi
         else
             LogError "aws_cmd failed :("
         fi
     fi
 }
 
-# Log date/time to .log file
-current_datetime=$(date +"%Y-%m-%d %H:%M:%S")
-echo "----- running backup-sync.sh @$current_datetime" >> ~/.sanyok/backblaze-sync.log
+# Load environment variables
+source ~/.sanyok-private/s3-variables
 
-# Global environment variable checks
+# Check is environment variables are set correctly
 CheckGlobalVar "S3_PROFILE"
 CheckGlobalVar "S3_ENDPOINT"
 

@@ -73,7 +73,9 @@ ZSH_THEME="evan"
 plugins=(git ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
-source $HOME/.sanyok-private/s3-variables
+
+export VISUAL="nvim"
+export EDITOR="nvim"
 
 # User configuration
 
