@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Make sure variables are correct!
-export S3_PROFILE="" # aws cli profile_name
-export S3_ENDPOINT="" # https://s3.some_region.host_url.com
+export S3_PROFILE=""         # aws cli profile_name
+export S3_ENDPOINT=""        # https://s3.some_region.host_url.com
 
-export S3_DIR_PERSONAL="" # /media/drive_name/host_name/bucket_name/...
-export S3_URL_PERSONAL="" # s3://bucket_name"
+export S3_DIR_PERSONAL=""    # /media/drive_name/host_name/bucket_name/
+export S3_URL_PERSONAL=""    # s3://bucket_name"
 
-export S3_DIR_DEVELOPMENT="" # /media/drive_name/host_name/bucket_name/..
+export S3_DIR_DEVELOPMENT="" # /media/drive_name/host_name/bucket_name/
 export S3_URL_DEVELOPMENT="" # s3://bucket_name"
