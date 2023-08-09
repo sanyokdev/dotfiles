@@ -39,6 +39,9 @@ fi
 # exec xterm -geometry 80x66+0+0 -name login
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+$HOME/.screenlayout/display.sh
+xsetroot -cursor_name left_ptr
+picom -f --daemon &
+nitrogen --restore &
 solaar -w hide &
-picom -f &
-exec awesome
+exec bspwm
