@@ -43,5 +43,6 @@ $HOME/.screenlayout/display.sh
 xsetroot -cursor_name left_ptr
 picom -f --daemon &
 nitrogen --restore &
+dunst &
 solaar -w hide &
 exec bspwm
