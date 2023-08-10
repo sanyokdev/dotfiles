@@ -45,4 +45,6 @@ picom -f --daemon &
 nitrogen --restore &
 dunst &
 solaar -w hide &
+spotify &
+discord &
 exec bspwm
