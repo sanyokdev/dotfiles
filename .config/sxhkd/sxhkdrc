@@ -58,15 +58,27 @@ super + s
 super + Escape
 	pkill -USR1 -x sxhkd
 
-# --- Audio --- #
-XF86AudioRaiseVolume
-    pactl set-sink-volume 0 +2.5%
+# --- Media --- #
+XF86AudioPlay
+    playerctl --player=spotify play-pause
+
+XF86AudioStop
+    playerctl --player=spotify stop
+
+XF86AudioPrev
+    playerctl --player=spotify previous
+
+XF86AudioNext
+    playerctl --player=spotify next
+
+XF86AudioMute
+    pactl set-sink-mute 0 toggle
 
 XF86AudioLowerVolume
     pactl set-sink-volume 0 -2.5%
 
-XF86AudioMute
-    pactl set-sink-mute 0 toggle
+XF86AudioRaiseVolume
+    pactl set-sink-volume 0 +2.5%
 
 # --- Rofi --- #
 # Application launcher

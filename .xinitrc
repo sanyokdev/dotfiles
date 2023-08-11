@@ -43,6 +43,7 @@ $HOME/.screenlayout/display.sh
 xsetroot -cursor_name left_ptr
 picom -f --daemon &
 nitrogen --restore &
+playerctld daemon &
 dunst &
 solaar -w hide &
 spotify &

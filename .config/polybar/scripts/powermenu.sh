@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 choice=$(printf " Log Out\n Power Off\n Restart" | rofi -dmenu -i -p "Power option:")
 case "$choice" in
