@@ -19,15 +19,15 @@ super + shift + {Left,Right}
 super + {1-4}
 	bspc desktop -f "^{1-4}"
 
-super + ctrl + {1-4}
+super + shift + {1-4}
 	bspc desktop -f "^{5-8}"
 
 # Send active window to a desktop
-super + shift {1-4}
-	bspc node -d "^{1-4}"
+super + ctrl {1-8}
+	bspc node -d "^{1-8}"
 
-super + shift + ctrl {1-4}
-	bspc node -d "^{5-8}"
+# super + shift + ctrl {1-4}
+# 	bspc node -d "^{5-8}"
 
 # Toggle tiled modes
 super + t

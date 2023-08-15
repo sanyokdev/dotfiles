@@ -1,13 +1,14 @@
 #!/bin/bash
 
-status="$(playerctl status 2>&1)"
+player="--player=spotify"
+status="$(playerctl status $player 2>&1)"
 max_length=33
 icon_on="%{T4}󰝚%{T-}"
 icon_off="%{T4}󰝛%{T-}"
 
 if [ "$status" != "No players found" ]; then
-    raw_title=$(playerctl metadata --format "[{{ artist }}] {{ title }}" --player=spotify)
-    duration=$(playerctl metadata --format "{{ duration(position) }}/{{ duration(mpris:length) }}" --player=spotify)
+    raw_title=$(playerctl metadata --format "[{{ artist }}] {{ title }}" $player)
+    duration=$(playerctl metadata --format "{{ duration(position) }}/{{ duration(mpris:length) }}" $player)
 
     if [ ${#raw_title} -gt $max_length ]; then
         title="${raw_title:0:$max_length - 3}..."

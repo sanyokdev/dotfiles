@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 sxhkd &
 $HOME/.config/polybar/launch.sh
@@ -16,6 +16,6 @@ bspc config focused_border_color "#D0686B"
 bspc config focus_follows_pointer true
 bspc config ignore_ewmh_focus true
 
-bspc rule -a steam desktop="^4" state=floating center=true
+bspc rule -a steam desktop="^4" state=tiled follow=off
 bspc rule -a Spotify desktop="^5" state=tiled follow=off
 bspc rule -a discord desktop="^6" state=tiled follow=off
