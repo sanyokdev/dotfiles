@@ -41,6 +41,7 @@ fi
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 $HOME/.screenlayout/display.sh
 xsetroot -cursor_name left_ptr
+xset r rate 250 30
 picom -f --daemon &
 nitrogen --restore &
 playerctld daemon &
