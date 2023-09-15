@@ -1,19 +1,18 @@
 #!/bin/bash
 
-# Terminate already running bar instances
-# If all your bars have IPC enabled, you can use polybar-msg cmd quit
-# Otherwise, you can use the nuclear option: killall -q polybar
+# Select desired bar
+bar_name="ikigai" # Default bar
+if [[ "$1" == "--recording" ]]; then
+    bar_name="recording" # Recording bar
+fi
 
-# Launch Polybar and log the output to a file
+# Launch/quit Polybar and log the output to a file
 {
-  polybar-msg cmd quit  # Attempt to gracefully quit running instances
+  polybar-msg cmd quit # Attempt to gracefully quit running instances
   killall -q polybar   # If graceful quit fails, forcefully terminate instances
 
-  config="ikigai" # Default bar
-  if [[ "$1" == "--recording" ]]; then
-      config="recording" # Recording bar
-  fi
-
-  polybar "$config"
+  polybar -c ~/.config/polybar/config-"$bar_name".ini custom
   echo "--- Polybar Launched!"
 } > /tmp/polybar1.log 2>&1 & disown
+
+echo "$bar_name" > ~/.sanyok/polybar-cur.txt

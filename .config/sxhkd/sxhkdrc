@@ -1,15 +1,11 @@
-# Start recording
-super + F1
-    source $HOME/.config/polybar/scripts/recording.sh
-
-# Stop recording
-super + F2
-    $HOME/.config/polybar/scripts/recording.sh --stop 
-
 # --- BSPWM --- #
 # Restart bspwm
 super + shift + r
 	bspc wm -r
+
+# Quit bspwm
+super + alt + q
+	bspc quit
 
 # Close or kill window
 super + {_,shift + }q
@@ -49,10 +45,10 @@ super + f
 super + s
     bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
 
-# # Preselect the window direction
-# super + ctrl + {Left,Down,Up,Right}
-# 	bspc node -p {west,south,north,east}
-#
+# Preselect the window direction
+super + ctrl + {Left,Down,Up,Right}
+	bspc node -p {west,south,north,east}
+
 # # Preselect the window ratio
 # super + ctrl + {1-9}
 # 	bspc node -o 0.{1-9}
@@ -121,3 +117,11 @@ Print
 # Take fullscreen screenshot
 Print + ctrl
     flameshot full -p ~/Pictures/Screenshots/
+
+# Start recording
+super + F1
+    source $HOME/.config/polybar/scripts/recording.sh
+
+# Stop recording
+super + F2
+    $HOME/.config/polybar/scripts/recording.sh --stop

@@ -8,3 +8,5 @@
 .config/mpv/mpv
 .sanyok/.sanyok
 .sanyok/backblaze-sync.log
+.sanyok/yad-prev.txt
+.sanyok/polybar-cur.txt
