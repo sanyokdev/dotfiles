@@ -1,3 +1,11 @@
+# Start recording
+super + F1
+    source $HOME/.config/polybar/scripts/recording.sh
+
+# Stop recording
+super + F2
+    $HOME/.config/polybar/scripts/recording.sh --stop 
+
 # --- BSPWM --- #
 # Restart bspwm
 super + shift + r

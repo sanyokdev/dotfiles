@@ -19,3 +19,4 @@ bspc config ignore_ewmh_focus true
 bspc rule -a steam desktop="^4" state=tiled follow=off
 bspc rule -a Spotify desktop="^5" state=tiled follow=off
 bspc rule -a discord desktop="^6" state=tiled follow=off
+bspc rule -a obs desktop="^7" state=tiled follow=off

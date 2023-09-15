@@ -9,6 +9,11 @@
   polybar-msg cmd quit  # Attempt to gracefully quit running instances
   killall -q polybar   # If graceful quit fails, forcefully terminate instances
 
+  config="ikigai" # Default bar
+  if [[ "$1" == "--recording" ]]; then
+      config="recording" # Recording bar
+  fi
+
+  polybar "$config"
   echo "--- Polybar Launched!"
-  polybar ikigai  # Launch bar
 } > /tmp/polybar1.log 2>&1 & disown
