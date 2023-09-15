@@ -33,8 +33,6 @@ if [[ "$(<~/.sanyok/polybar-cur.txt)" != "recording" ]]; then
     fi
 
     # Prompt for input and set the environment variable, use previous if found 
-    notify-send "No recording message set!" --expire-time=2500
-    
     msg_path=$HOME/.sanyok/yad-prev.txt
     touch $msg_path # Create file if not found
     prev_msg=$(<$msg_path)
