@@ -113,7 +113,7 @@ alias lg="lazygit"
 alias cd-dev="cd ~/Dev/"
 alias cd-dot="cd ~/Dev/dotfiles/"
 alias cd-nvim="cd ~/Dev/dotfiles/.config/nvim/"
-alias cd-proj="cd ~/Dev/C-Cpp/visual-turtle/"
+alias cd-proj="cd ~/Dev/C-Cpp/multi-space/"
 alias cd-anime="cd /media/Wintertoad/Anime/"
 
 alias vfi="nsxiv"
