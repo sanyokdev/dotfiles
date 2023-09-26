@@ -97,6 +97,24 @@ super + c
 super + p
     ~/.config/polybar/scripts/powermenu.sh
 
+# --- Screenshots --- #
+# Take partial screenshot
+Print
+    flameshot gui -p ~/Pictures/Screenshots/
+
+# Take fullscreen screenshot
+Print + ctrl
+    flameshot full -p ~/Pictures/Screenshots/
+
+# --- Recording --- #
+# Start recording
+super + F1
+    source $HOME/.config/polybar/scripts/recording.sh
+
+# Stop recording
+super + F2
+    $HOME/.config/polybar/scripts/recording.sh --stop
+
 # --- Applications --- #
 # Terminal
 super + Return
@@ -110,18 +128,6 @@ super + w
 super + e
 	nautilus
 
-# Take partial screenshot
-Print
-    flameshot gui -p ~/Pictures/Screenshots/
-
-# Take fullscreen screenshot
-Print + ctrl
-    flameshot full -p ~/Pictures/Screenshots/
-
-# Start recording
-super + F1
-    source $HOME/.config/polybar/scripts/recording.sh
-
-# Stop recording
-super + F2
-    $HOME/.config/polybar/scripts/recording.sh --stop
+# Obsidian
+super + n
+    obsidian
