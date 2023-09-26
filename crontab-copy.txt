@@ -1,0 +1,10 @@
+# backblaze backups
+15 17 * * * sh -c "~/.sanyok/backup-sync.sh personal" >> ~/.sanyok/backblaze-sync.log 2>&1 
+30 22 * * * sh -c "~/.sanyok/backup-sync.sh personal" >> ~/.sanyok/backblaze-sync.log 2>&1
+
+20 17 * * * sh -c "~/.sanyok/backup-sync.sh development" >> ~/.sanyok/backblaze-sync.log 2>&1
+35 22 * * * sh -c "~/.sanyok/backup-sync.sh development" >> ~/.sanyok/backblaze-sync.log 2>&1
+
+# redshift colors
+DISPLAY=:0
+30 22 * * * /usr/bin/redshift -P -O 4500
