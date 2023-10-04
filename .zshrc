@@ -116,5 +116,5 @@ alias cd-dot="cd ~/Dev/dotfiles/"
 alias cd-nvim="cd ~/Dev/dotfiles/.config/nvim/"
 alias cd-anime="cd /media/Wintertoad/Anime/"
 
-alias vfi="nsxiv"
+alias vfi="qimgv"
 alias vfv="mpv --loop"
