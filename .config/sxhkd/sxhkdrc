@@ -115,6 +115,13 @@ super + F1
 super + F2
     $HOME/.config/polybar/scripts/recording.sh --stop
 
+# --- Redshift --- #
+super + F7
+    redshift -P -O 4500
+
+super + shift + F7
+    redshift -P -O 6500
+
 # --- Applications --- #
 # Terminal
 super + Return
