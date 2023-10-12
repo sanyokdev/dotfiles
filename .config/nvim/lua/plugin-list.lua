@@ -211,11 +211,9 @@ require("lazy").setup({
 		"lukas-reineke/indent-blankline.nvim",
 		event = { "BufReadPost", "BufNewFile" },
 		config = function()
-			require("indent_blankline").setup({
-				char = "│",
-				use_treesitter = true,
-				show_trailing_blankline_indent = false,
-				show_current_context = false,
+			require("ibl").setup({
+				indent = { char = "│" },
+				scope = { enabled = false },
 			})
 		end,
 	},
