@@ -38,7 +38,7 @@ require("lazy").setup({
 	},
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.2",
+		tag = "0.1.4",
 		cmd = "Telescope",
 		dependencies = {
 			{ "nvim-lua/plenary.nvim", lazy = true },
@@ -82,7 +82,7 @@ require("lazy").setup({
 	-- Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
-		tag = "v0.9.0",
+		tag = "v0.9.1",
 		build = ":TSUpdate",
 		event = "BufReadPre",
 		config = function()
