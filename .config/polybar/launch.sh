@@ -15,4 +15,4 @@ fi
   echo "--- Polybar Launched!"
 } > /tmp/polybar1.log 2>&1 & disown
 
-echo "$bar_name" > ~/.sanyok/polybar-cur.txt
+echo "$bar_name" > ~/.sanyok-private/polybar-cur.txt
