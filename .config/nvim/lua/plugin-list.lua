@@ -112,6 +112,7 @@ require("lazy").setup({
 					"lua_ls",
 					"clangd",
 					"cmake",
+					"zls",
 				},
 			})
 		end,

@@ -21,3 +21,6 @@ bspc rule -a Spotify desktop="^5" state=tiled follow=off
 bspc rule -a discord desktop="^6" state=tiled follow=off
 bspc rule -a obs desktop="^7" state=tiled follow=off
 bspc rule -a Yad state=floating
+bspc rule -a mana-app state=floating
+bspc rule -a mana-app-debug.exe state=floating
+bspc rule -a mana-app-release.exe state=floating
