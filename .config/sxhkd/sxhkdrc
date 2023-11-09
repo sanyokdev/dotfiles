@@ -20,18 +20,12 @@ super + shift + {Left,Right}
 	bspc desktop -f {prev,next}.local
 
 # Focus on a desktop
-super + {1-4}
-	bspc desktop -f "^{1-4}"
-
-super + shift + {1-4}
-	bspc desktop -f "^{5-8}"
+super + {1-8}
+	bspc desktop -f "^{1-8}"
 
 # Send active window to a desktop
 super + ctrl {1-8}
 	bspc node -d "^{1-8}"
-
-# super + shift + ctrl {1-4}
-# 	bspc node -d "^{5-8}"
 
 # Toggle tiled modes
 super + t
@@ -49,13 +43,13 @@ super + s
 super + ctrl + {Left,Down,Up,Right}
 	bspc node -p {west,south,north,east}
 
+# Cancel the preselection
+super + ctrl + c
+	bspc node -p cancel
+
 # # Preselect the window ratio
 # super + ctrl + {1-9}
 # 	bspc node -o 0.{1-9}
-#
-# # Cancel the preselection
-# super + ctrl + c
-# 	bspc node -p cancel
 
 # --- SXHKD --- #
 # Reload sxhkd and its configuration files:
