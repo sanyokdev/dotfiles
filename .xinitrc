@@ -48,6 +48,6 @@ nitrogen --restore &
 playerctld daemon &
 dunst &
 solaar -w hide &
-spotify &
-discord &
+spotify > /dev/null 2>&1 &
+discord > /dev/null 2>&1 &
 exec bspwm
