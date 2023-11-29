@@ -38,7 +38,7 @@ require("lazy").setup({
 	},
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.4",
+		tag = "0.1.5",
 		cmd = "Telescope",
 		dependencies = {
 			{ "nvim-lua/plenary.nvim", lazy = true },
@@ -146,7 +146,7 @@ require("lazy").setup({
 			"hrsh7th/cmp-cmdline", -- source for vim cmd
 
 			-- Snippets
-			{ "L3MON4D3/LuaSnip", version = "2.0.0" }, -- snippet engine
+			{ "L3MON4D3/LuaSnip", version = "2.1.0" }, -- snippet engine
 			"saadparwaiz1/cmp_luasnip", -- source for autocomplete
 		},
 	},
