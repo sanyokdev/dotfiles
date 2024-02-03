@@ -17,7 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 -- Plugin setup
 require("lazy").setup({
 	-- Colorscheme
-    { "catppuccin/nvim" },
+	{ "catppuccin/nvim" },
 
 	-- File management
 	{
