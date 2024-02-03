@@ -17,7 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 -- Plugin setup
 require("lazy").setup({
 	-- Colorscheme
-	{ "rmehri01/onenord.nvim" },
+    { "catppuccin/nvim" },
 
 	-- File management
 	{
@@ -146,7 +146,7 @@ require("lazy").setup({
 			"hrsh7th/cmp-cmdline", -- source for vim cmd
 
 			-- Snippets
-			{ "L3MON4D3/LuaSnip", version = "2.1.0" }, -- snippet engine
+			{ "L3MON4D3/LuaSnip", version = "2.2.0" }, -- snippet engine
 			"saadparwaiz1/cmp_luasnip", -- source for autocomplete
 		},
 	},

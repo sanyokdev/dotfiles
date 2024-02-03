@@ -35,3 +35,8 @@ vim.opt.clipboard:append("unnamedplus") -- Use system clipboard
 -- Window management
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
+-- Colors
+vim.opt.background = "dark"
+vim.opt.termguicolors = true
+vim.cmd([[colorscheme catppuccin-frappe]])
