@@ -73,3 +73,9 @@ lspconfig["cmake"].setup({
 	capabilities = custom_capabilities,
 	on_attach = custom_attach,
 })
+
+-- Odin
+lspconfig["ols"].setup({
+	capabilities = custom_capabilities,
+	on_attach = custom_attach,
+})
