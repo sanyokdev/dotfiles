@@ -35,7 +35,7 @@ opt.ignorecase = true
 opt.smartcase = true
 
 -- Text & Clipboard
-opt.iskeyword:append("-")           -- Consider dash as part of a word
+opt.iskeyword:append("-") -- Consider dash as part of a word
 opt.clipboard:append("unnamedplus") -- Use system clipboard
 
 -- Window management
@@ -94,13 +94,13 @@ keymap.set("n", "<C-s>", ":w<CR>", opts)
 keymap.set("i", "<C-s>", "<Esc>:w<CR>", opts)
 keymap.set("n", "<leader>wq", ":wqa<CR>", opts)
 
--- Delete word with ctrl + backspace
-function DeleteWordBeforeCursor()
-	vim.cmd("normal! b")
-	vim.cmd("normal! dw")
-end
-
-keymap.set("i", "<C-H>", "<Esc>:lua DeleteWordBeforeCursor()<CR>a", opts)
+-- Delete word with ctrl + backspace (note: too buggy, need alternative)
+-- function DeleteWordBeforeCursor()
+-- 	vim.cmd("normal! b")
+-- 	vim.cmd("normal! dw")
+-- end
+--
+-- keymap.set("i", "<C-H>", "<Esc>:lua DeleteWordBeforeCursor()<CR>a", opts)
 
 -- Automatic format on save
 vim.cmd([[
@@ -127,7 +127,7 @@ end
 keymap.set("n", "<leader>fv", ":lua vim.cmd('Oil ' .. GetBufferDir())<CR>", opts) -- [F]ile [V]iew
 
 -- Telescope
-keymap.set("n", "<leader>kb", ":Telescope keymaps<CR>", opts)         -- [K]ey [B]indings
+keymap.set("n", "<leader>kb", ":Telescope keymaps<CR>", opts) -- [K]ey [B]indings
 keymap.set("n", "<leader>ch", ":Telescope command_history<CR>", opts) -- [C]ommand [H]istory
 
 keymap.set(
@@ -135,14 +135,14 @@ keymap.set(
 	"<leader>ff",
 	":lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({previewer=false}))<CR>",
 	opts
-)                                                                                   -- [F]ile [F]inder
-keymap.set("n", "<leader>fs", ":Telescope live_grep<CR>", opts)                     -- [F]ile [S]earch
-keymap.set("n", "<leader>fw", ":Telescope grep_string<CR>", opts)                   -- [F]ind [W]ord under cursor
-keymap.set("n", "<leader>fb", ":Telescope buffers<CR>", opts)                       -- [F]ind [B]uffer
-keymap.set("n", "<leader>fd", ":Telescope diagnostics theme=dropdown<CR>", opts)    -- [F]ind [D]iagnostics
+) -- [F]ile [F]inder
+keymap.set("n", "<leader>fs", ":Telescope live_grep<CR>", opts) -- [F]ile [S]earch
+keymap.set("n", "<leader>fw", ":Telescope grep_string<CR>", opts) -- [F]ind [W]ord under cursor
+keymap.set("n", "<leader>fb", ":Telescope buffers<CR>", opts) -- [F]ind [B]uffer
+keymap.set("n", "<leader>fd", ":Telescope diagnostics theme=dropdown<CR>", opts) -- [F]ind [D]iagnostics
 keymap.set("n", "<leader>fr", ":Telescope lsp_references theme=dropdown<CR>", opts) -- [F]ind [R]eferences
 
-keymap.set("n", "<leader>gd", ":Telescope lsp_definitions<CR>", opts)               -- [G]oto [D]efinition
+keymap.set("n", "<leader>gd", ":Telescope lsp_definitions<CR>", opts) -- [G]oto [D]efinition
 keymap.set("n", "<leader>ds", ":Telescope lsp_document_symbols theme=dropdown<CR>", opts)
 keymap.set("n", "<leader>ws", ":Telescope lsp_workspace_symbols theme=dropdown<CR>", opts)
 
@@ -157,9 +157,17 @@ keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>", opts)
 function TargetRunner()
 	local Menu = require("nui.menu")
 
-	-- Read the contents of tasks.json
+	-- Check if file exists
 	local path = vim.fn.getcwd():gsub("\\", "/")
-	local contents = vim.fn.readfile(string.format("%s/tasks.json", path))
+	local tasksFilePath = string.format("%s/tasks.json", path)
+
+	if not vim.loop.fs_stat(tasksFilePath) then
+		print(string.format("Task runner: tasks.json not found in %s", path))
+		return
+	end
+
+	-- Read the contents of tasks.json
+	local contents = vim.fn.readfile(tasksFilePath)
 
 	-- Decode the JSON string
 	local data = vim.fn.json_decode(table.concat(contents, "\n"))
@@ -215,7 +223,7 @@ function TargetRunner()
 		position = "50%",
 		size = {
 			width = 25,
-			height = 5,
+			height = #data.tasks,
 		},
 		border = {
 			style = "single",
