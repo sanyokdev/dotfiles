@@ -17,7 +17,8 @@ vim.opt.rtp:prepend(lazypath)
 -- Plugin setup
 require("lazy").setup({
 	-- Colorscheme
-	{ "catppuccin/nvim" },
+	-- { "catppuccin/nvim" },
+	{ "morhetz/gruvbox" },
 
 	-- File management
 	{
@@ -87,7 +88,8 @@ require("lazy").setup({
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
-					theme = "catppuccin",
+					-- theme = "catppuccin",
+					theme = "gruvbox",
 					component_separators = { left = "", right = "" },
 					section_separators = { left = "", right = "" },
 				},
@@ -122,7 +124,21 @@ require("lazy").setup({
 		event = "BufReadPre",
 		config = function()
 			require("nvim-treesitter.configs").setup({
-				ensure_installed = { "lua", "vim", "vimdoc", "markdown", "markdown_inline", "c", "cpp", "odin", "cmake", "make", "bash", "gitignore", "json" },
+				ensure_installed = {
+					"lua",
+					"vim",
+					"vimdoc",
+					"markdown",
+					"markdown_inline",
+					"c",
+					"cpp",
+					"odin",
+					"cmake",
+					"make",
+					"bash",
+					"gitignore",
+					"json",
+				},
 				auto_install = true,
 				highlight = { enable = true },
 				indent = { enable = true },
@@ -182,7 +198,7 @@ require("lazy").setup({
 
 			-- Snippets
 			{ "L3MON4D3/LuaSnip", version = "2.3.0" }, -- snippet engine
-			"saadparwaiz1/cmp_luasnip",       -- source for autocomplete
+			"saadparwaiz1/cmp_luasnip", -- source for autocomplete
 		},
 	},
 

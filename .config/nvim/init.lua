@@ -45,7 +45,10 @@ opt.splitbelow = true
 -- Colors
 opt.background = "dark"
 opt.termguicolors = true
-vim.cmd([[colorscheme catppuccin-frappe]])
+-- vim.cmd([[colorscheme catppuccin-frappe]])
+vim.g.gruvbox_contrast_dark = "medium"
+vim.g.gruvbox_invert_selection = 0
+vim.cmd([[colorscheme gruvbox]])
 
 -- -------------------------------------------
 -- General Keybinds
@@ -132,7 +135,8 @@ keymap.set("n", "<leader>ch", ":Telescope command_history<CR>", opts) -- [C]omma
 
 keymap.set(
 	"n",
-	"<leader>ff",
+	-- "<leader>ff",
+	"<leader><space>",
 	":lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({previewer=false}))<CR>",
 	opts
 ) -- [F]ile [F]inder

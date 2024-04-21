@@ -9,9 +9,10 @@ local config = {
     default_cursor_style = "BlinkingBar",
     cursor_blink_ease_in = "Constant",
     cursor_blink_ease_out = "Constant",
-    force_reverse_video_cursor = true,
+    force_reverse_video_cursor = false,
 
-    color_scheme = "catppuccin-frappe",
+    -- color_scheme = "catppuccin-frappe",
+    color_scheme = "Gruvbox dark, medium (base16)",
 
     enable_tab_bar = true,
     hide_tab_bar_if_only_one_tab = true,
