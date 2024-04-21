@@ -46,9 +46,9 @@ opt.splitbelow = true
 opt.background = "dark"
 opt.termguicolors = true
 -- vim.cmd([[colorscheme catppuccin-frappe]])
+vim.cmd([[colorscheme gruvbox]])
 vim.g.gruvbox_contrast_dark = "medium"
 vim.g.gruvbox_invert_selection = 0
-vim.cmd([[colorscheme gruvbox]])
 
 -- -------------------------------------------
 -- General Keybinds
@@ -71,7 +71,7 @@ keymap.set("n", "<A-Up>", ":move -2<cr>", opts)
 keymap.set("n", "<A-Down>", ":move +1<cr>", opts)
 
 -- Clear search & highlight
-keymap.set("n", "<Esc>", ":nohl<CR>", opts)
+keymap.set("n", "<Esc>", ":nohl<CR>:echo ''<CR>", opts)
 
 -- Toggle word wrapping
 keymap.set("n", "<leader>wr", ":set wrap!<CR>", opts)
