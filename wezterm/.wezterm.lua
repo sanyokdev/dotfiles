@@ -5,6 +5,12 @@ local config = {
     animation_fps = 75,
     max_fps = 75,
 
+    cursor_blink_rate = 500,
+    default_cursor_style = "BlinkingBar",
+    cursor_blink_ease_in = "Constant",
+    cursor_blink_ease_out = "Constant",
+    force_reverse_video_cursor = true,
+
     color_scheme = "catppuccin-frappe",
 
     enable_tab_bar = true,

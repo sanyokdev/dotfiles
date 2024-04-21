@@ -262,8 +262,6 @@ function TargetRunner()
 					vim.fn.execute("split | terminal sh -c '" .. item.command .. "'")
 				end
 			end
-
-			vim.cmd("startinsert")
 		end,
 	})
 
