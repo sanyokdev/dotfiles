@@ -1,0 +1,40 @@
+# Base Config
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="evan"
+
+plugins=(git ssh-agent zsh-autosuggestions zsh-syntax-highlighting)
+source $ZSH/oh-my-zsh.sh
+
+export VISUAL="nvim"
+export EDITOR="nvim"
+
+# User Config
+alias cls="clear"
+alias ls="ls -A --color=auto"
+alias lg="lazygit"
+alias nv="nvim ./"
+
+alias cd-dev="cd /mnt/c/Dev/"
+alias cd-mana="cd /mnt/c/Dev/projects/c-cpp/libMana/"
+alias cd-game="cd /mnt/c/Dev/projects/c-cpp/steam-game/"
+
+alias cd-nvim="cd ~/.config/nvim/"
+alias cd-win="cd /mnt/c/"
+
+# Function to start or attach to a Tmux session
+tmux_or_attach() {
+    # Check if a Tmux session named 'main' exists
+    if ! tmux has-session -t main 2>/dev/null; then
+        # If no session exists, create a new one named 'main'
+        tmux new -s main
+    else
+        # If a session exists, attach to it
+        tmux attach-session -t main
+    fi
+}
+
+# Alias to start or attach to the Tmux session
+alias tm="tmux_or_attach"
+
+# Set working directory to "home"
+cd ~/

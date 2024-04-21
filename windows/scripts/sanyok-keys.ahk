@@ -29,5 +29,11 @@ return
 
 ; --- Open windows terminal
 #Enter::
-    Run, wt
+    Run, "C:\Program Files\WezTerm\wezterm-gui.exe" start --cwd "C:\Dev"
+
+    WinWait, ahk_exe wezterm-gui.exe, , 5 ; Wait for 5 seconds for the window to appear
+    if !ErrorLevel
+    {
+        WinActivate ; Activate the window
+    }
 return

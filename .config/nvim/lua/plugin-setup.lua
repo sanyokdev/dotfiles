@@ -40,12 +40,47 @@ require("lazy").setup({
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.6",
 		cmd = "Telescope",
+		config = function()
+			require("telescope").setup({
+				defaults = {
+					hidden = true,
+					vimgrep_arguments = {
+						"rg",
+						"--color=never",
+						"--no-heading",
+						"--with-filename",
+						"--line-number",
+						"--column",
+						"--smart-case",
+						"--hidden",
+						"--no-ignore-vcs",
+						"--glob",
+						"!{**/.git/*,**/.cache/*,**/bin/*,**/build/*}",
+					},
+				},
+				pickers = {
+					find_files = {
+						hidden = true,
+						find_command = {
+							"rg",
+							"--files",
+							"--hidden",
+							"--no-ignore-vcs",
+							"--glob",
+							"!{**/.git/*,**/.cache/*,**/bin/*,**/build/*}",
+						},
+					},
+				},
+			})
+		end,
 		dependencies = {
 			{ "nvim-lua/plenary.nvim", lazy = true },
 		},
 	},
 
 	-- IDE visuals
+	{ "MunifTanjim/nui.nvim" },
+
 	{
 		"nvim-lualine/lualine.nvim",
 		config = function()
@@ -83,11 +118,11 @@ require("lazy").setup({
 	{
 		"nvim-treesitter/nvim-treesitter",
 		tag = "v0.9.1",
-		build = ":TSUpdate",
+		build = ":TSUpdateSync",
 		event = "BufReadPre",
 		config = function()
 			require("nvim-treesitter.configs").setup({
-				ensure_installed = { "lua", "vim", "vimdoc", "markdown", "c", "cpp", "cmake", "make" },
+				ensure_installed = { "lua", "vim", "vimdoc", "markdown", "markdown_inline", "c", "cpp", "odin", "cmake", "make", "bash", "gitignore", "json" },
 				auto_install = true,
 				highlight = { enable = true },
 				indent = { enable = true },
@@ -109,8 +144,8 @@ require("lazy").setup({
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
-					"lua_ls",
-					"clangd",
+					-- "lua_ls", -- Already installed!
+					-- "clangd", -- Already installed!
 					"cmake",
 					"ols",
 				},
@@ -147,7 +182,7 @@ require("lazy").setup({
 
 			-- Snippets
 			{ "L3MON4D3/LuaSnip", version = "2.3.0" }, -- snippet engine
-			"saadparwaiz1/cmp_luasnip", -- source for autocomplete
+			"saadparwaiz1/cmp_luasnip",       -- source for autocomplete
 		},
 	},
 
@@ -156,31 +191,11 @@ require("lazy").setup({
 		"mhartington/formatter.nvim",
 		event = { "BufReadPost" },
 		config = function()
-			-- A temporary monkey-patch until this is fixed @midrare
-			local patch_clangformat_bug = function(f)
-				local o = f()
-				if o.args and type(o.args) == "table" then
-					local new_args = {}
-					local skip = false
-					for i, v in ipairs(o.args) do
-						if skip then
-							skip = false
-						elseif v == "-assume-filename" and (o.args[i + 1] == "''" or o.args[i + 1] == '""') then
-							skip = true
-						elseif type(v) ~= "string" or not v:find("^-style=") then
-							table.insert(new_args, v)
-						end
-					end
-					o.args = new_args
-				end
-				return o
-			end
-
 			require("formatter").setup({
 				filetype = {
 					lua = { require("formatter.filetypes.lua").stylua },
-					c = { patch_clangformat_bug(require("formatter.filetypes.c").clangformat) },
-					cpp = { patch_clangformat_bug(require("formatter.filetypes.cpp").clangformat) },
+					c = { require("formatter.filetypes.c").clangformat },
+					cpp = { require("formatter.filetypes.cpp").clangformat },
 				},
 			})
 		end,

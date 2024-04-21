@@ -1,0 +1,44 @@
+Distro (Arch): 
+- https://github.com/yuk7/ArchWSL
+- https://wsldl-pg.github.io/ArchW-docs/How-to-Setup
+
+Update & Upgrade:
+- sudo pacman -Syu
+
+Base Packages:
+- sudo pacman -S base-devel clang cmake gdb git htop lazygit man-db man-pages nasm neofetch neovim ninja npm openssh pacman-contrib python python-pip python-websockets reflector rsync stylua tealdeer unzip wget xsel zig zsh dos2unix ripgrep
+
+Manual Packages:
+- ohmyzsh
+- yay
+
+Aur Packages:
+- yay -S informant
+
+Edit ~/.zshrc:
+- Use WSL-zshrc.txt
+- zsh-autosuggestions: Makes suggestions as you type in the terminal.
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+- zsh-syntax-highlighting:
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+- source ~/.zshrc
+
+Add ~/.dircolors:
+- Use dircolors.txt
+- eval "$(dircolors ~/.dircolors)"
+
+Link local windows nvim config with arch:
+- ln -sf /mnt/c/Dev/dotfiles/.config/nvim ~/.config/nvim
+
+Run reflector:
+- sudo reflector --save /etc/pacman.d/mirrorlist --country Portugal,Spain --latest 20 --sort rate
+
+Create git ssh keys:
+- ssh-keygen -t ed25519 -C "your_email@example.com"
+- source ~/.zshrc
+- cat ~/.ssh/id_ed25519.pub | note: add this result as a new ssh key https://github.com/settings/keys
+- ssh -T git@github.com
+
+Set base git config vars:
+- git config --global user.name "Your Name"
+- git config --global user.email "your.email@example.com"
