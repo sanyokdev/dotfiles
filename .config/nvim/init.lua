@@ -95,7 +95,6 @@ keymap.set("n", "<leader>tp", ":tabp<CR>", opts)
 -- Saving and quitting
 keymap.set("n", "<C-s>", ":w<CR>", opts)
 keymap.set("i", "<C-s>", "<Esc>:w<CR>", opts)
-keymap.set("n", "<leader>wq", ":wqa<CR>", opts)
 
 -- Delete word with ctrl + backspace (note: too buggy, need alternative)
 -- function DeleteWordBeforeCursor()

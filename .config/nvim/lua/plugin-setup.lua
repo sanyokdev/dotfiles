@@ -80,8 +80,6 @@ require("lazy").setup({
 	},
 
 	-- IDE visuals
-	{ "MunifTanjim/nui.nvim" },
-
 	{
 		"nvim-lualine/lualine.nvim",
 		config = function()
@@ -115,6 +113,16 @@ require("lazy").setup({
 			"nvim-tree/nvim-web-devicons",
 		},
 	},
+	{
+		"echasnovski/mini.tabline",
+		version = false,
+		config = function()
+			require("mini.tabline").setup({
+				tabpage_section = "right",
+			})
+		end,
+	},
+	{ "MunifTanjim/nui.nvim" },
 
 	-- Treesitter
 	{
