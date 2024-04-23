@@ -46,9 +46,9 @@ opt.splitbelow = true
 opt.background = "dark"
 opt.termguicolors = true
 -- vim.cmd([[colorscheme catppuccin-frappe]])
-vim.cmd([[colorscheme gruvbox]])
 vim.g.gruvbox_contrast_dark = "medium"
 vim.g.gruvbox_invert_selection = 0
+vim.cmd([[colorscheme gruvbox]])
 
 -- -------------------------------------------
 -- General Keybinds
