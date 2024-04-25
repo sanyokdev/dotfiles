@@ -93,8 +93,8 @@ keymap.set("n", "<leader>tn", ":tabn<CR>", opts)
 keymap.set("n", "<leader>tp", ":tabp<CR>", opts)
 
 -- Saving and quitting
-keymap.set("n", "<C-s>", ":w<CR>", opts)
-keymap.set("i", "<C-s>", "<Esc>:w<CR>", opts)
+keymap.set("n", "<C-s>", ":wa<CR>", opts)
+keymap.set("i", "<C-s>", "<Esc>:wa<CR>", opts)
 
 -- Delete word with ctrl + backspace (note: too buggy, need alternative)
 -- function DeleteWordBeforeCursor()
@@ -142,7 +142,13 @@ keymap.set(
 keymap.set("n", "<leader>fs", ":Telescope live_grep<CR>", opts) -- [F]ile [S]earch
 keymap.set("n", "<leader>fw", ":Telescope grep_string<CR>", opts) -- [F]ind [W]ord under cursor
 keymap.set("n", "<leader>fb", ":Telescope buffers<CR>", opts) -- [F]ind [B]uffer
-keymap.set("n", "<leader>fd", ":Telescope diagnostics theme=dropdown<CR>", opts) -- [F]ind [D]iagnostics
+-- keymap.set("n", "<leader>fd", ":Telescope diagnostics theme=dropdown<CR>", opts) -- [F]ind [D]iagnostics
+keymap.set(
+	"n",
+	"<leader>fd",
+	":lua require('telescope.builtin').diagnostics(require('telescope.themes').get_dropdown{layout_config = {width = 0.9}})<CR>",
+	opts
+) -- [F]ind [D]iagnostics
 keymap.set("n", "<leader>fr", ":Telescope lsp_references theme=dropdown<CR>", opts) -- [F]ind [R]eferences
 
 keymap.set("n", "<leader>gd", ":Telescope lsp_definitions<CR>", opts) -- [G]oto [D]efinition
@@ -287,6 +293,7 @@ end
 keymap.set("n", "<leader>1", ":lua OpenAndChangeCWD('C:/Dev/dotfiles/.config/nvim')<CR>", opts)
 keymap.set("n", "<leader>2", ":lua OpenAndChangeCWD('C:/Dev/projects/c-cpp/libMana')<CR>", opts)
 keymap.set("n", "<leader>3", ":lua OpenAndChangeCWD('C:/Dev/projects/c-cpp/steam-game')<CR>", opts)
+keymap.set("n", "<leader>4", ":lua OpenAndChangeCWD('C:/Dev/projects/odin/odin-engine')<CR>", opts)
 
 -- Reload config
 keymap.set("n", "<leader><A-r>", ":source C:/Dev/dotfiles/.config/nvim/init.lua<CR>")
