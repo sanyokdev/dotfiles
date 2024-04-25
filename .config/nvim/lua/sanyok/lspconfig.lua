@@ -5,7 +5,9 @@ local opts = { noremap = true, silent = true }
 local custom_attach = function(_, bufnr)
 	-- See ":help vim.lsp.*" for docs
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>gh", ":lua vim.lsp.buf.hover()<CR>", opts) -- [G]et [H]elp
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>", opts) -- [C]ode [A]ction
 
+	-- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>", opts)
 	-- vim.api.nvim_buf_set_keymap(bufnr, "n", ",wa", ":lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
 	-- vim.api.nvim_buf_set_keymap(bufnr, "n", ",wr", ":lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
 	-- vim.api.nvim_buf_set_keymap(
