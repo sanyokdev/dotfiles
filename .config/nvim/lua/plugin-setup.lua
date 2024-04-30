@@ -118,6 +118,7 @@ require("lazy").setup({
 		version = false,
 		config = function()
 			require("mini.tabline").setup({
+				set_vim_settings = false,
 				tabpage_section = "right",
 			})
 		end,
