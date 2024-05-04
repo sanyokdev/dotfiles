@@ -60,9 +60,6 @@ vim.g.maplocalleader = " "
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
--- Create terminal
-keymap.set("n", "<leader>tr", ":term<CR>", opts)
-
 -- Leave terminal mode by hitting esc
 keymap.set("t", "<Esc>", "<C-\\><C-n>", opts)
 
