@@ -18,8 +18,8 @@ local config = {
         bottom = 0,
     },
 
-    -- color_scheme = "catppuccin-frappe",
     color_scheme = "Gruvbox dark, medium (base16)",
+    -- color_scheme = "One Light (Gogh)",
 
     enable_tab_bar = true,
     hide_tab_bar_if_only_one_tab = true,

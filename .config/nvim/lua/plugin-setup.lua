@@ -17,8 +17,8 @@ vim.opt.rtp:prepend(lazypath)
 -- Plugin setup
 require("lazy").setup({
 	-- Colorscheme
-	-- { "catppuccin/nvim" },
 	{ "morhetz/gruvbox" },
+	-- { "rmehri01/onenord.nvim" },
 
 	-- File management
 	{
@@ -86,8 +86,8 @@ require("lazy").setup({
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
-					-- theme = "catppuccin",
 					theme = "gruvbox",
+					-- theme = "onenord",
 					component_separators = { left = "", right = "" },
 					section_separators = { left = "", right = "" },
 				},

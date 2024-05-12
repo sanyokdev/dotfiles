@@ -43,12 +43,237 @@ opt.splitright = true
 opt.splitbelow = true
 
 -- Colors
+-- (Gruvbox)
 opt.background = "dark"
 opt.termguicolors = true
--- vim.cmd([[colorscheme catppuccin-frappe]])
+
 vim.g.gruvbox_contrast_dark = "medium"
 vim.g.gruvbox_invert_selection = 0
 vim.cmd([[colorscheme gruvbox]])
+
+-- (OneNord)
+-- vim.opt.background = "light"
+-- vim.opt.termguicolors = true
+-- vim.cmd([[colorscheme onenord]])
+
+--[[
+local colors = require("onenord.colors").load()
+require("onenord").setup({
+	styles = {
+		comments = "none",
+		strings = "none",
+		keywords = "none",
+
+		functions = "none",
+		variables = "none",
+		diagnostics = "underline",
+	},
+	disable = {
+		eob_lines = true,
+	},
+	inverse = {
+		match_paren = false,
+	},
+	custom_highlights = {
+		---- Reference: https://github.com/rmehri01/onenord.nvim/blob/main/lua/onenord/theme.lua#L318
+
+		----------------
+		---- Syntax ----
+		----------------
+		StorageClass = { fg = colors.red },
+		Structure = { fg = colors.red },
+		Constant = { fg = colors.purple },
+		Number = { fg = colors.purple },
+		Boolean = { fg = colors.purple },
+		Float = { fg = colors.purple },
+		Statement = { fg = colors.orange },
+		Label = { fg = colors.orange },
+		Operator = { fg = colors.fg_light },
+		PreProc = { fg = colors.yellow },
+		Include = { fg = colors.yellow },
+		Define = { fg = colors.yellow },
+		Macro = { fg = colors.purple },
+		Typedef = { fg = colors.red },
+		PreCondit = { fg = colors.yellow },
+		Special = { fg = colors.purple },
+		SpecialChar = { fg = colors.purple },
+		Delimiter = { fg = colors.fg_light },
+		Comment = { fg = colors.gray },
+		Conditional = { fg = colors.orange },
+		Keyword = { fg = colors.orange },
+		Repeat = { fg = colors.orange },
+
+		htmlArg = { fg = colors.cyan },
+		htmlTag = { fg = colors.red },
+		htmlEndTag = { fg = colors.red },
+		htmlTagN = { fg = colors.orange },
+		htmlTagName = { fg = colors.orange },
+		htmlSpecialTagName = { fg = colors.orange },
+		htmlH1 = { fg = colors.red, style = "bold" },
+		htmlH3 = { fg = colors.red, style = "bold" },
+		htmlH4 = { fg = colors.red, style = "bold" },
+		htmlH5 = { fg = colors.red, style = "bold" },
+
+		cssAttributeSelector = { fg = colors.cyan },
+		cssSelectorOp = { fg = colors.blue },
+		cssTagName = { fg = colors.red },
+
+		----------------
+		---- Editor ----
+		----------------
+		IncSearch = { fg = colors.bg, bg = colors.orange, style = "bold" },
+		LineNr = { fg = colors.gray },
+		CursorLineNr = { style = "italic" },
+		MatchParen = { fg = colors.orange },
+		Search = { bg = "#E8EBF0" },
+		WildMenu = { fg = colors.yellow },
+		CursorLine = { bg = "#E2E6EC" },
+		NormalMode = { fg = colors.blue },
+		CommandMode = { fg = colors.orange },
+
+		--------------------
+		---- Treesitter ----
+		--------------------
+		["@boolean"] = { fg = colors.purple },
+		["@comment"] = { fg = colors.gray },
+		["@conditional"] = { fg = colors.orange },
+		["@constant"] = { fg = colors.purple, style = "bold" },
+		["@constant.builtin"] = { fg = colors.purple },
+		["@constant.macro"] = { fg = colors.purple },
+		["@constructor"] = { fg = colors.blue },
+		["@field"] = { fg = colors.cyan },
+		["@function.builtin"] = { fg = colors.blue },
+		["@function.macro"] = { fg = colors.purple },
+		["@include"] = { fg = colors.yellow, style = "italic" },
+		["@define"] = { fg = colors.yellow, style = "italic" },
+		["@keyword"] = { fg = colors.red },
+		["@keyword.function"] = { fg = colors.red },
+		["@keyword.operator"] = { fg = colors.red },
+		["@keyword.return"] = { fg = colors.red },
+		["@namespace"] = { fg = colors.orange },
+		["@number"] = { fg = colors.purple },
+		["@operator"] = { fg = colors.fg_light },
+		["@parameter"] = { fg = colors.fg },
+		["@parameter.reference"] = { fg = colors.fg },
+		["@property"] = { fg = colors.cyan },
+		["@punctuation.delimiter"] = { fg = colors.light_gray },
+		["@punctuation.bracket"] = { fg = colors.light_gray },
+		["@punctuation.special"] = { fg = colors.light_gray },
+		["@repeat"] = { fg = colors.orange },
+		["@string.regex"] = { fg = colors.purple },
+		["@string.escape"] = { fg = colors.purple },
+		["@symbol"] = { fg = colors.red },
+		["@tag"] = { fg = colors.red },
+		["@tag.attribute"] = { fg = colors.cyan },
+		["@tag.delimiter"] = { fg = colors.fg },
+		["@text.strong"] = { fg = colors.yellow, style = "bold" },
+		["@text.emphasis"] = { fg = colors.orange, style = "italic" },
+		["@text.title"] = { fg = colors.purple, style = "bold" },
+		["@text.uri"] = { fg = colors.blue, style = "underline" },
+		["@text.environment.name"] = { fg = colors.red },
+		["@type.builtin"] = { fg = colors.red },
+
+		-----------------
+		---- Plugins ----
+		-----------------
+		-- TODO: Configure plugin colors
+
+		-- Cmp
+		CmpItemKindText = { fg = colors.fg_light },
+
+		CmpItemKindMethod = { fg = colors.blue },
+		CmpItemKindFunction = { fg = colors.blue },
+		CmpItemKindConstructor = { fg = colors.yellow },
+		CmpItemKindField = { fg = colors.blue },
+		CmpItemKindClass = { fg = colors.yellow },
+		CmpItemKindInterface = { fg = colors.yellow },
+		CmpItemKindModule = { fg = colors.blue },
+		CmpItemKindProperty = { fg = colors.blue },
+		CmpItemKindValue = { fg = colors.orange },
+		CmpItemKindEnum = { fg = colors.yellow },
+		CmpItemKindKeyword = { fg = colors.purple },
+		CmpItemKindSnippet = { fg = colors.green },
+		CmpItemKindFile = { fg = colors.blue },
+		CmpItemKindEnumMember = { fg = colors.cyan },
+		CmpItemKindConstant = { fg = colors.orange },
+		CmpItemKindStruct = { fg = colors.yellow },
+		CmpItemKindTypeParameter = { fg = colors.yellow },
+
+		-- Telescope
+		TelescopeNormal = { fg = colors.fg, bg = colors.bg },
+		TelescopePromptPrefix = { fg = colors.purple },
+		TelescopePromptBorder = { fg = colors.blue },
+		TelescopeResultsBorder = { fg = colors.blue },
+		TelescopePreviewBorder = { fg = colors.blue },
+		TelescopeSelectionCaret = { fg = colors.cyan },
+		TelescopeSelection = { fg = colors.cyan },
+		TelescopeMatching = { fg = colors.yellow, style = "bold" },
+
+		-- LspSaga
+		TitleString = { fg = colors.fg },
+		TitleIcon = { fg = colors.red },
+		SagaBorder = { bg = colors.bg, fg = colors.blue },
+		SagaNormal = { bg = colors.bg },
+		SagaExpand = { fg = colors.dark_blue },
+		SagaCollapse = { fg = colors.dark_blue },
+		SagaBeacon = { bg = colors.purple },
+		ActionPreviewNormal = { link = "SagaNormal" },
+		ActionPreviewBorder = { link = "SagaBorder" },
+		ActionPreviewTitle = { fg = colors.yellow, bg = colors.bg },
+		CodeActionNormal = { link = "SagaNormal" },
+		CodeActionBorder = { link = "SagaBorder" },
+		CodeActionText = { fg = colors.orange },
+		CodeActionNumber = { fg = colors.green },
+		FinderSelection = { fg = colors.cyan, style = "bold" },
+		FinderFileName = { fg = colors.fg_light },
+		FinderCount = { link = "Label" },
+		FinderIcon = { fg = colors.cyan },
+		FinderType = { fg = colors.yellow },
+		FinderSpinnerTitle = { fg = colors.purple, style = "bold" },
+		FinderSpinner = { fg = colors.purple, style = "bold" },
+		FinderPreviewSearch = { link = "Search" },
+		FinderVirtText = { fg = colors.dark_blue },
+		FinderNormal = { link = "SagaNormal" },
+		FinderBorder = { link = "SagaBorder" },
+		FinderPreviewBorder = { link = "SagaBorder" },
+		DefinitionBorder = { link = "SagaBorder" },
+		DefinitionNormal = { link = "SagaNormal" },
+		DefinitionSearch = { link = "Search" },
+		HoverNormal = { link = "SagaNormal" },
+		HoverBorder = { link = "SagaBorder" },
+		RenameBorder = { link = "SagaBorder" },
+		RenameNormal = { fg = colors.orange, bg = colors.bg },
+		RenameMatch = { link = "Search" },
+		DiagnosticBorder = { link = "SagaBorder" },
+		DiagnosticSource = { fg = "gray" },
+		DiagnosticNormal = { link = "SagaNormal" },
+		DiagnosticErrorBorder = { link = "DiagnosticError" },
+		DiagnosticWarnBorder = { link = "DiagnosticWarn" },
+		DiagnosticHintBorder = { link = "DiagnosticHint" },
+		DiagnosticInfoBorder = { link = "DiagnosticInfo" },
+		DiagnosticPos = { fg = colors.light_gray },
+		DiagnosticWord = { fg = colors.fg },
+		CallHierarchyNormal = { link = "SagaNormal" },
+		CallHierarchyBorder = { link = "SagaBorder" },
+		CallHierarchyIcon = { fg = colors.purple },
+		CallHierarchyTitle = { fg = colors.red },
+		LspSagaLightBulb = { link = "DiagnosticSignHint" },
+		SagaShadow = { bg = colors.float },
+		OutlineIndent = { fg = colors.dark_blue },
+		OutlinePreviewBorder = { link = "SagaNormal" },
+		OutlinePreviewNormal = { link = "SagaBorder" },
+		TerminalBorder = { link = "SagaBorder" },
+		TerminalNormal = { link = "SagaNormal" },
+		LspSagaWinbarSep = { fg = colors.cyan },
+		LspSagaWinbarFile = { fg = colors.fg },
+		LspSagaWinbarWord = { fg = colors.fg_light },
+		LspSagaWinbarFolderName = { fg = colors.fg },
+	},
+	custom_colors = {
+		highlight = "#E3E6EC",
+	},
+})
+--]]
 
 -- -------------------------------------------
 -- General Keybinds
