@@ -285,6 +285,22 @@ vim.g.maplocalleader = " "
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
+-- Toggle line numbers
+function ToggleLineNumbers()
+	-- Run the command in each buffer
+	for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+		vim.api.nvim_buf_call(bufnr, function()
+			if vim.o.number then
+				vim.o.number = false
+			else
+				vim.o.number = true
+			end
+		end)
+	end
+end
+
+keymap.set("n", "<leader>ln", ":lua ToggleLineNumbers()<CR>", opts)
+
 -- Leave terminal mode by hitting esc
 keymap.set("t", "<Esc>", "<C-\\><C-n>", opts)
 
