@@ -173,6 +173,7 @@ require("lazy").setup({
 					-- "clangd", -- Already installed!
 					"cmake",
 					"ols",
+					"pylsp",
 				},
 			})
 		end,
@@ -221,6 +222,7 @@ require("lazy").setup({
 					lua = { require("formatter.filetypes.lua").stylua },
 					c = { require("formatter.filetypes.c").clangformat },
 					cpp = { require("formatter.filetypes.cpp").clangformat },
+					python = { require("formatter.filetypes.python").black },
 				},
 			})
 		end,
