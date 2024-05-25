@@ -39,7 +39,7 @@ require("lazy").setup({
 	},
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.6",
+		tag = "0.1.8",
 		cmd = "Telescope",
 		config = function()
 			require("telescope").setup({
