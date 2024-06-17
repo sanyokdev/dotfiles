@@ -404,12 +404,20 @@ keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>", opts)
 function TargetRunner()
 	local Menu = require("nui.menu")
 
-	-- Check if file exists
+	-- Check if the tasks file exists
 	local path = vim.fn.getcwd():gsub("\\", "/")
-	local tasksFilePath = string.format("%s/tasks.json", path)
+	local tasksFilePath = path .. "/tasks.json"
 
 	if not vim.loop.fs_stat(tasksFilePath) then
-		print(string.format("Task runner: tasks.json not found in %s", path))
+		print("Task runner: File 'tasks.json' not found in '" .. path .. "'")
+		return
+	end
+
+	-- Check if the build script exists
+	local scriptFilePath = path .. "/mb.c"
+
+	if not vim.loop.fs_stat(scriptFilePath) then
+		print("Task runner: File 'mb.c' not found in '" .. path .. "'")
 		return
 	end
 
@@ -417,51 +425,73 @@ function TargetRunner()
 	local contents = vim.fn.readfile(tasksFilePath)
 
 	-- Decode the JSON string
-	local data = vim.fn.json_decode(table.concat(contents, "\n"))
+	local jsonData = vim.fn.json_decode(table.concat(contents, "\n"))
 
-	if data == nil then
-		print("Task runner: Invalid JSON provided!")
+	-- Base sanity checks
+	if jsonData.compiler == nil then
+		print("Task runner: Key 'compiler' not found!")
 		return
-	end
-
-	-- Base command checks
-	if data.cmd == nil then
-		print("Task runner: No cmd found!")
-		return
-	elseif data.cmd == "" then
-		print("Task runner: cmd is empty!")
+	elseif jsonData.compiler == "" then
+		print("Task runner: Key 'compiler' has no value!")
 		return
 	end
 
 	-- Prepare list data based on specs provided by tasks.json
 	local linesData = {}
 
-	if data.tasks ~= nil then
-		if #data.tasks > 0 then
-			for index, task in ipairs(data.tasks) do
-				local itemData = {
+	if jsonData.tasks ~= nil then
+		if #jsonData.tasks > 0 then
+			for index, task in ipairs(jsonData.tasks) do
+				-- Task sanity checks
+				if task.name == nil then
+					print("Task runner: Key 'name' in task [id: " .. index .. "] not found!")
+					return
+				elseif task.name == "" then
+					print("Task runner: Key 'name' in task [id: " .. index .. "] has no value!")
+					return
+				end
+
+				if task.target == nil then
+					print("Task runner: Key 'target' in task [id: " .. index .. "] not found!")
+					return
+				elseif task.target == "" then
+					print("Task runner: Key 'target' in task [id: " .. index .. "] has no value!")
+					return
+				end
+
+				-- Prepare data
+				local item = {
 					name = task.name,
-					silent = "false",
-					command = path .. "/" .. data.cmd .. " " .. task.target,
+					target = task.target,
 					args = "",
+
+					buildCmd = jsonData.compiler .. " " .. path .. "/mb.c -o mb.exe",
+					runCmd = path .. "/mb.exe",
+
+					silent = "false",
+					skipCompile = "false",
 				}
 
-				if task.silent ~= nil and task.silent == "true" then
-					itemData.silent = "true"
-				end
-
 				if task.args ~= nil then
-					itemData.args = task.args
+					item.args = task.args
 				end
 
-				table.insert(linesData, Menu.item(" " .. index .. ". " .. task.name, itemData))
+				if task.silent ~= nil and task.silent == "true" then
+					item.silent = "true"
+				end
+
+				if task.skipCompile ~= nil and task.skipCompile == "true" then
+					item.skipCompile = "true"
+				end
+
+				table.insert(linesData, Menu.item(" " .. index .. ". " .. task.name, item))
 			end
 		else
 			print("Task runner: No tasks found!")
 			return
 		end
 	else
-		print("Task runner: tasks list is empty!")
+		print("Task runner: List 'tasks' is empty!")
 		return
 	end
 
@@ -470,7 +500,7 @@ function TargetRunner()
 		position = "50%",
 		size = {
 			width = 25,
-			height = #data.tasks,
+			height = #jsonData.tasks,
 		},
 		border = {
 			style = "single",
@@ -492,22 +522,22 @@ function TargetRunner()
 			submit = { "<CR>", "<Space>" },
 		},
 		on_close = function()
-			print("Task runner: cancelled!")
+			print("Task runner: Cancelled!")
 		end,
 		on_submit = function(item)
-			print("Task runner: executed ", item.name)
+			print("Task runner: Executed task '" .. item.name .. "'")
+
+			local cmd = item.runCmd .. " " .. item.target
+			if item.skipCompile ~= "true" then
+				cmd = item.buildCmd .. " && " .. cmd
+			end
+
+			local args = (item.args ~= "" and (" " .. item.args) or "")
+
 			if item.silent == "true" then
-				if item.args ~= "" then
-					vim.fn.execute("! sh -c '" .. item.command .. " " .. item.args .. "'")
-				else
-					vim.fn.execute("! sh -c '" .. item.command .. "'")
-				end
+				vim.fn.system(cmd .. args)
 			else
-				if item.args ~= "" then
-					vim.fn.execute("split | terminal sh -c '" .. item.command .. " " .. item.args .. "'")
-				else
-					vim.fn.execute("split | terminal sh -c '" .. item.command .. "'")
-				end
+				vim.fn.execute("split | terminal " .. cmd .. args)
 			end
 		end,
 	})
