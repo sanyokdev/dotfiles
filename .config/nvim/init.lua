@@ -536,6 +536,9 @@ function TargetRunner()
 
 			if item.silent == "true" then
 				vim.fn.system(cmd .. args)
+				if vim.v.shell_error ~= 0 then
+					print("Task runner: Failed to execute silent task '" .. item.name .. "'")
+				end
 			else
 				vim.fn.execute("split | terminal " .. cmd .. args)
 			end
