@@ -465,7 +465,7 @@ function TargetRunner()
 					target = task.target,
 					args = "",
 
-					buildCmd = jsonData.compiler .. " " .. path .. "/mb.c -o mb.exe",
+					buildCmd = jsonData.compiler .. " -ggdb " .. path .. "/mb.c -o mb.exe",
 					runCmd = path .. "/mb.exe",
 
 					silent = "false",
