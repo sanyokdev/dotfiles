@@ -401,7 +401,7 @@ keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>", opts)
 -- -------------------------------------------
 
 -- Build tasks (needs tasks.json at project root)
-function TargetRunner()
+function TaskRunner()
 	local Menu = require("nui.menu")
 
 	-- Check if the tasks file exists
@@ -548,7 +548,7 @@ function TargetRunner()
 	menu:mount()
 end
 
-keymap.set("n", "<leader>tr", ":lua TargetRunner()<CR>", opts)
+keymap.set("n", "<leader>tr", ":lua TaskRunner()<CR>", opts)
 
 -- Open projects
 function OpenAndChangeCWD(path)
